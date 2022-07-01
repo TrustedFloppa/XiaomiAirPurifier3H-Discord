@@ -1,2 +1,2 @@
 # XiaomiAirPurifier3H-Discord
-Credits go to @rytilahti for python-miio
+### Credits go to @rytilahti for python-miio
