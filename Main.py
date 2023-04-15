@@ -49,6 +49,9 @@ async def set_fan_level(level):
     except DeviceException:
         return f"Unable to set fan speed to level {level}."
 
+async def get_commands():
+    return "Available commands:\n!on - turn on air purifier\n!off - turn off air purifier\n!temperature - get current temperature\n!humidity - get current humidity\n!aqi - get current AQI\n!fan X - set fan speed level to X (1-3)"
+
 @client.event
 async def on_ready():
     print("Bot is ready.")
@@ -87,6 +90,10 @@ async def on_message(message):
                 response = "Fan speed level must be between 1 and 3."
         except ValueError:
             response = "Invalid fan speed level."
+        await message.channel.send(response)
+
+    elif message.content == "!cmds":
+        response = await get_commands()
         await message.channel.send(response)
 
 client.run("YOUR_DISCORD_BOT_TOKEN")
